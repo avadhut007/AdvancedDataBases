@@ -1,0 +1,91 @@
+Flask Application
+------------------------------------------------------
+Pending Features:
+Create seperate file for env vars
+deploy on Azure App service -- Done
+Add Bootstrap UI --Done
+Add Error messages
+Push to Github -- DONE
+
+Setup
+------------------------------------------------------
+pip install flask
+
+
+
+
+How to Run
+------------------------------------------------------
+
+$env:FLASK_APP = "WebApp.py" 
+$env:FLASK_DEBUG = 1
+
+flask run
+or
+python FlaskApp.py
+
+
+
+
+Python to Azure DB connection
+------------------------------------------------------
+https://docs.microsoft.com/en-us/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development?view=sql-server-ver15
+
+
+pip install pyodbc
+
+then download the drivers
+https://docs.microsoft.com/en-us/sql/connect/python/pyodbc/python-sql-driver-pyodbc?view=sql-server-ver15
+
+pyodbc Documentation
+https://github.com/mkleehammer/pyodbc
+
+create a sqlserver and sqldb
+
+try:
+  
+    conn = pyodbc.connect(connstr)
+    cursor = conn.cursor()
+    cursor.execute("SELECT TOP 3 name, collation_name FROM sys.databases")
+    row = cursor.fetchone()
+    while row:
+        print (str(row[0]) + " " + str(row[1]))
+        row = cursor.fetchone()
+
+except Exception:
+    print("Error connecting DB")
+
+finally:
+        if conn:
+            cursor.close()
+            conn.close()
+------------------------------------------------------
+
+pip install azure-storage-blob
+
+
+Create a storage account and container
+
+------------------------------------------------------
+Check how to print error messages
+
+
+------------------------------------------------------
+Deploy on Azure App Service:
+
+Custom Flask main module: by default, App Service assumes that a Flask app's main module is application.py or app.py. 
+If your main module uses a different name, then you must customize the startup command. 
+For example, if you have a Flask app whose main module is hello.py and the Flask app object in that file is named myapp, 
+then the command is as follows:
+
+gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
+
+gunicorn --bind=0.0.0.0 --timeout 600 WebApp:web_app
+------------------------------------------------------
+------------------------------------------------------
+------------------------------------------------------
+------------------------------------------------------
+------------------------------------------------------
+------------------------------------------------------
+------------------------------------------------------
+

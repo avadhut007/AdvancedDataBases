@@ -59,10 +59,12 @@
         <br> 
         <h4>Search earthquakes based on Distance and Location  or (Latitude and Longitude) in Descending Order of Magnitude</h4>
         <form action="/home" method="post">
-            Location <input type="text" name="search_loc"> <br><br>
-            Latitude <input type="number" step="any" name="search_lat"> 
-            Longitude <input type="number" step="any" name="search_long"> <br>
-            Distance in km<input type="number" step="any" name="search_dist"> <br>
+            Location <input type="text" name="dist_loc"> <br><br>
+            Latitude <input type="number" step="any" name="dist_lat"> 
+            Longitude <input type="number" step="any" name="dist_long"> <br>
+            Distance in km<input type="number" step="any" name="dist_dist"> <br>
+            From Date: <input type="date" name="dist_from_date" id="">
+            To Date:   <input type="date" name="dist_to_date" id="">
             <br>
             <br>  
             <button type="submit"> Search to show Information </button>

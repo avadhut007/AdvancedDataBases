@@ -1,0 +1,4 @@
+Find earthquakes greater than and less than mag 
+
+
+

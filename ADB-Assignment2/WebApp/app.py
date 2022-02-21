@@ -132,10 +132,12 @@ def home_function():
 
                 return render_template('home.html',count_rows=count_rows,t_headings1=t_headings1,list_result1=list_result1)
             
-            if 'search_dist' in request.form:
-                location = request.form["search_loc"]
-                latitude = request.form["search_lat"]
-                longitude = request.form["search_long"]
+            if 'dist_dist' in request.form:
+                location = request.form["dist_loc"]
+                latitude = request.form["dist_lat"]
+                longitude = request.form["dist_long"]
+                from_date = request.form["dist_from_date"]
+                to_date = request.form["dist_to_date"]
                 if len(location)!=0:
                     main_url = mapQuest_url+mapQuest_key+'&location='+location
                     print(main_url)
@@ -146,11 +148,14 @@ def home_function():
                     longitude = location_data['lng']
                     #print("lat and lang=",latitude,longitude)
 
-                distance = request.form["search_dist"]
+                distance = request.form["dist_dist"]
                 if len(distance)!=0:
                     distance = float(distance)
 
-                search_query = "SELECT * FROM av_asg2 ORDER By mag DESC"
+                search_query = "SELECT * FROM av_asg2 WHERE 1 = 1 "
+                if len(from_date) !=0  and len(to_date) !=0 :
+                    search_query+=" AND time between '" + str(from_date) + "' AND '" + str(to_date) + "'"
+                search_query+=" ORDER By mag DESC"
                 list_result2 = run_search_query(search_query)
                 location1 = (float(latitude),float(longitude))
                     
@@ -161,7 +166,7 @@ def home_function():
                     if distance >= actual_diff:
                         list_result2_updated.append(item)
                 
-                count_rows2 = f"The count of earthquakes from {location} lat= {latitude} and lng= {longitude} within {distance} km is {len(list_result2_updated)}"
+                count_rows2 = f"The count of earthquakes from {location} lat= {latitude} and lng= {longitude} within {distance} km is {len(list_result2_updated)} from {from_date} to {to_date}"
                 
                 t_headings2 = ["time", "latitude","longitude", "depth","mag","magType","nst","gap","dmin","rms","net","id","updated","place","type","horizontalError","depthError","magError","magNst","status","locationSource","magSource"]
 
@@ -211,7 +216,7 @@ def update_function():
             room = request.form["update_room"]
             telnum = request.form["update_telnum"]
             keyw = request.form["update_keyw"]
-            update_records(name,state,sal,grade,room,telnum,keyw)
+            #update_records(name,state,sal,grade,room,telnum,keyw)
 
     return render_template("update.html")
 

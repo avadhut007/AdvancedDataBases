@@ -1,0 +1,23 @@
+ACID Properties
+
+Redis - memcache
+
+Redis Docs:
+------------
+
+key: value 
+
+stored in RAM
+
+
+Improve performance of application
+
+
+
+
+
+
+
+
+
+

@@ -24,13 +24,6 @@
         <br>
 
 
-        <b>Click Below To Clear the Cache</b>
-        <form action="/home" method="post">
-            <button type="submit" name="clear_cache_button"> Clear Cache </button>
-
-        </form>
-        <br> <br>
-
         <h4>Task 1 </h4> 
 
         <b>Query 1: Random Query</b>
@@ -64,6 +57,15 @@
 <!-- ----------- Redis Cache Functions Start here ----------- -->
 
         <h4>Task 2: Using Redis cache </h4> 
+
+        
+        <b>Click Below To Clear the Cache</b>
+        <form action="/home" method="post">
+            <button type="submit" name="clear_cache_button"> Clear Cache </button>
+
+        </form>
+        <br> <br>
+
 
         <b>Query 3: Random Query using Redis</b>
         <br>
@@ -171,16 +173,24 @@
             {% endfor %}
             
         </table>
+        <div id="scroll1">
+            {% if scroll1 %}
+            <script>
+                document.getElementById('{{ scroll1 }}').scrollIntoView();
+            </script>
+            {% endif %}
+        </div>
         </div>
 
         <br> 
         <b>Search earthquakes based on Distance and Location  or (Latitude and Longitude) in Descending Order of Magnitude</b>
         <hr>
         <form action="/home" method="post">
+            Distance in km<input type="number" step="any" name="dist_dist"> <br>
             Location <input type="text" name="dist_loc"> <br><br>
             Latitude <input type="number" step="any" name="dist_lat"> 
             Longitude <input type="number" step="any" name="dist_long"> <br>
-            Distance in km<input type="number" step="any" name="dist_dist"> <br>
+            
             From Date: <input type="date" name="dist_from_date" id="">
             To Date:   <input type="date" name="dist_to_date" id="">
             <br>
@@ -211,6 +221,13 @@
             {% endfor %}
             
         </table>
+        <div id="scroll2">
+            {% if scroll2 %}
+            <script>
+                document.getElementById('{{ scroll2 }}').scrollIntoView();
+            </script>
+            {% endif %}
+        </div>
         </div>
 
         <br> 

@@ -205,7 +205,7 @@ def home_function():
                     final_time = time.time()
                     exec_time = final_time - init_time
                     list_result33 = pickle.loads(list_result33)
-                    
+
                     statement_33 = f"The Execution time is  {exec_time}  seconds for running this query {n_times} times."
                     count_rows33 = f"The total count of earthquakes occured is {(len(list_result33))}"
 
@@ -282,7 +282,7 @@ def home_function():
                 
                 t_headings1 = ["time", "latitude","longitude", "depth","mag","magType","nst","gap","dmin","rms","net","id","updated","place","type","horizontalError","depthError","magError","magNst","status","locationSource","magSource"]
 
-                return render_template('home.html',count_rows=count_rows,t_headings1=t_headings1,list_result1=list_result1)
+                return render_template('home.html',count_rows=count_rows,t_headings1=t_headings1,list_result1=list_result1,scroll1="scroll1")
             
             if 'dist_dist' in request.form:
                 location = request.form["dist_loc"]
@@ -322,7 +322,7 @@ def home_function():
                 
                 t_headings2 = ["time", "latitude","longitude", "depth","mag","magType","nst","gap","dmin","rms","net","id","updated","place","type","horizontalError","depthError","magError","magNst","status","locationSource","magSource"]
 
-                return render_template('home.html',count_rows2=count_rows2,t_headings2=t_headings2,list_result2_updated=list_result2_updated)
+                return render_template('home.html',count_rows2=count_rows2,t_headings2=t_headings2,list_result2_updated=list_result2_updated,scroll2="scroll2")
             
 
 

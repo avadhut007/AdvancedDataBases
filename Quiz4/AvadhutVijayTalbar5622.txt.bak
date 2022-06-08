@@ -1,0 +1,269 @@
+
+Name: Avadhut Vijay Talbar
+Last 4 digits ID: 5622
+
+CSE 6331, Cloud Computing					
+
+
+Quiz Q4, Spring 2022   (c) DL, UTA, 2022
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     12 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please send the link, raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here:
+     AVT
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program/submission with your name and last digits of your ID.
+
+ 4a. Using the cloud services provider, all functionality possible should be implemented on that provider.
+     (Of course, displaying web pages through a browser and the user interface is "local")
+
+ 4b. Upload all data files (*csv, not this quiz) to cloud service. 
+
+ 4c. Create a database with the file, in a table. 
+  
+Show and submit code, when each part is complete, raise your hand and then show us:
+
+ To recieve credit you MUST show (demo) AND submit the code (text only) on Canvas.
+
+ 5. Show a web page and interface (which resides on the cloud provider) with your 
+    Student ID at the top and below that, your name, at the top of every web page dispayed 
+    (for this quiz). Please use a large font.
+
+    For this question (only this question), 
+    Using a web interface (web page) allow a user to give a number N, and show a pie chart with N slices, 
+    where each pie slice represents 1/N th of the number of entries in the coresponding range in column 3 
+    (the last column), for example for N = 10, the data ranges (for that column) from 8 to 211, so for equal 
+    spaced intervals = (211-8)/10 = 20.3, so there are 17 entries from 8 to 20.3; that is the fraction is 17/50
+    of the data. (For N=2, (211-8)/2, slightly less than half.)
+    Each pie slice should be in a different color, please show the percent labels outside each slice.
+    The pie chart should occupy between 70 and 90% of the screen width. 
+	8 to 45 and 45 to 90
+	
+	            if 'nvalue_45' in request.form:
+                nvalue_45 = int(request.form["nvalue_45"])
+
+                diff = (211-8)/nvalue_45
+                list_result45_updated = []
+                intervals = decrange(8,212,diff)
+                slices = 0
+                for i in intervals:
+                    slices+=1
+                    search_query = "SELECT count(*) FROM quiz4 WHERE col3 BETWEEN " + str(i) + " AND " + str((i+diff))
+                    print(search_query)
+                    list_result45 = run_search_query(search_query)
+                    #print(i,i+1,"result",list_result3)
+                    list_result45_updated.append([f"{i} to {i+diff}",list_result45[0][0]])
+                    if slices == nvalue_45:
+                        break
+                print("result updated",list_result45_updated)
+
+
+                return render_template('piechart.html',data_for_chart=list_result45_updated)
+
+				    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        // Load data here
+        var data_for_chart = {{ data_for_chart | safe }}
+        
+        chartType = "PieChart";
+        containerId = "chart1";
+        options = {"title":"Count based on Mag range"};
+    </script>
+
+    <script>
+        // Draw Chart Here
+        google.charts.load('current', {'packages':['corechart']});  
+        google.charts.setOnLoadCallback(drawChart);
+
+
+        function drawChart(){
+          
+          var data = new google.visualization.DataTable();
+          data.addColumn('string','Mag range');
+          data.addColumn('number','Count');
+          data.addRows(data_for_chart);
+          google.visualization.drawChart({
+            "containerId": containerId,
+            "dataTable": data,
+            "chartType": chartType,
+            "options": options
+          });
+        }
+    </script>
+
+
+
+
+
+ 6. On a web form, please allow a user, to give a range of values Low to High (L,H) and a value N, and for column 2, 
+    show a vertical bar chart with N bars, where each bar is is 1/N th of the values equally divided in the range H-L.
+    Each bar should be labeled, please show labels below each bar.
+    All bars should be the same color (any you want), and this chart should be 80% to 90% the size of the screen.
+
+	            if 'low_46' in request.form:
+                low_46 = float(request.form["low_46"])
+                high_46 = float(request.form["high_46"])
+                nvalue_46 = int(request.form["nvalue_46"])
+
+                diff = (high_46-low_46)/nvalue_46
+                list_result46_updated = []
+                intervals = decrange(low_46,high_46+1,diff)
+                slices = 0
+                for i in intervals:
+                    slices+=1
+                    search_query = "SELECT count(*) FROM quiz4 WHERE col2 BETWEEN " + str(i) + " AND " + str((i+diff))
+                    print(search_query)
+                    list_result46 = run_search_query(search_query)
+                    #print(i,i+1,"result",list_result3)
+                    list_result46_updated.append([f"{i} to {i+diff}",list_result46[0][0]])
+                    if slices == nvalue_46:
+                        break
+                print("result updated",list_result46_updated)
+
+
+                return render_template('barchart.html',data_for_chart=list_result46_updated)
+	
+				    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        // Load data here
+        var data_for_chart = {{ data_for_chart | safe }}
+        
+        chartType = "ColumnChart";
+        containerId = "chart2";
+        options = {"title":"Bar Chart",
+
+                    
+        };
+    </script>
+
+    <script>
+        // Draw Chart Here
+        google.charts.load('current', {'packages':['corechart']});  
+        google.charts.setOnLoadCallback(drawChart);
+
+
+        function drawChart(){
+          
+          var data = new google.visualization.DataTable();
+          data.addColumn('string','Mag range');
+          data.addColumn('number','Count');
+          data.addRows(data_for_chart);
+          google.visualization.drawChart({
+            "containerId": containerId,
+            "dataTable": data,
+            "chartType": chartType,
+            "options": options
+          });
+        }
+    </script>
+				
+	
+
+
+	
+				
+ 7. On a web form, please allow a user, to give a range of values Low to High (L,H) for values in column 3
+    (for example 100 to 120) and show a point chart (scatter chart) with those values from column 3 for the X axis
+    and the corresponding values from column 2 x column 1 (multiply the values together) on the Y axis.
+    Please scale this chart to be readable and make sense, and label the X and Y axis.
+    Please note: You will need to scale the X and Y axis, as well as label the X and Y axis.
+
+
+	            if 'low_47' in request.form:
+                low_47 = float(request.form["low_47"])
+                high_47 = float(request.form["high_47"])
+
+
+                list_result47_updated = []
+
+
+                search_query = "SELECT * FROM quiz4 WHERE col3 BETWEEN " + str(low_47) + " AND " + str(high_47)
+                print(search_query)
+                list_result47 = run_search_query(search_query)
+                search_query = "SELECT col1*col2 FROM quiz4 WHERE col3 BETWEEN " + str(low_47) + " AND " + str(high_47)
+                print(search_query)
+                list_result48 = run_search_query(search_query)
+                print(list_result48)
+                #print(i,i+1,"result",list_result3)
+                for i in range(len(list_result47)):
+                    list_result47_updated.append([list_result47[i][0],list_result48[i][0]])
+
+                print("result updated",list_result47_updated)
+
+
+                return render_template('scatterchart.html',data_for_chart=list_result47_updated)
+
+
+				    <script>
+        // Load data here
+        var data_for_chart = {{ data_for_chart | safe }}
+        
+        chartType = "ScatterChart";
+        containerId = "chart3";
+        options = { "title": 'Scatter Chart',
+                    "hAxis": {"title": "col3"},
+                    "vAxis" : {"title": "col2 * col1 "}, 
+               
+        };
+    </script>
+
+    <script>
+        // Draw Chart Here
+        google.charts.load('current', {'packages':['corechart']});  
+        google.charts.setOnLoadCallback(drawChart);
+
+
+        function drawChart(){
+          
+          var data = new google.visualization.DataTable();
+          data.addColumn('number','Mag');
+          data.addColumn('number','Depth');
+          data.addRows(data_for_chart);
+          google.visualization.drawChart({
+            "containerId": containerId,
+            "dataTable": data,
+            "chartType": chartType,
+            "options": options
+          });
+        }
+    </script>
+
+
+
+
+
+ 8. Show us, in a link, the application running and we will try it out. Only for parts 5, 6, 7
+
+ 10. When complete, return (send) this quiz
+     If you finish early, send this immediately, otherwise send between
+     the end of class and no more than 1 minute after that.
+

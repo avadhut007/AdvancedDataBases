@@ -1,0 +1,205 @@
+
+Name: Avadhut Vijay Talbar
+Last 4 digits ID: 5622
+
+CSE 6331, Cloud Computing					
+
+
+Quiz Q3, Spring 2022   (c) DL, UTA, 2022
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     12 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please send the link, raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here:
+     _________________
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program/submission with your name and last digits of your ID.
+
+ 4a. Using the cloud services provider, all functionality possible should be implemented on that provider.
+     (Of course, displaying web pages through a browser and the user interface is "local")
+
+ 4b. Upload all data files (*csv, not this quiz) to cloud service. 
+
+ 4c. Create a database with the two csv files, each is a table. The ni table contains user names and the id for each, the di table
+     has a user's id, the password (pwd) for that user and a code.
+  
+Show and submit code, when each part is complete, raise your hand and then show us:
+
+ To recieve credit you MUST show (demo) AND submit the code (text only) on Canvas.
+
+ 5. Show a web page and interface (which resides on the cloud provider) with your 
+    Student ID at the top and below that, your name, at the top of every web page dispayed 
+    (for this quiz). Please use a large font.
+
+    Using the ni table, and using a web interface (web page) allow a user to give a range of 
+    id (for example 2345 to 5555) and show all of the names and id within that range.
+   
+    Also show the smallest and largest id and names in the data within that range.
+
+           if 'from_id_q5' in request.form:
+                #print(request.form["search_name"])
+                from_id = int(request.form["from_id_q5"])
+                to_id = int(request.form["to_id_q5"])
+                print("here")
+                search_query = "SELECT * FROM ni WHERE 1 = 1 "
+                search_query += " AND id between " + str(from_id) + " AND " + str(to_id) + " ORDER BY id"
+                print(search_query)
+                list_result_q5 = run_search_query(search_query)
+                print(list_result_q5)
+                smallest = list_result_q5[0]
+                print(search_query)
+                largest = list_result_q5[len(list_result_q5)-1]
+                statement_q5 = f"The smallest user and id is  {smallest} and largest user and id {largest}."
+                
+                t_headings_q5 = ["name","id"]
+
+                return render_template('home.html',t_headings_q5=t_headings_q5,list_result_q5=list_result_q5,statement_q5=statement_q5)               
+
+
+
+
+ 6. (a) Allow a user to give an id number (in  tables) range, and for all id in that range, list id, name, pwd and code.
+
+            if 'from_id_q6' in request.form:
+                #print(request.form["search_name"])
+                from_id = int(request.form["from_id_q6"])
+                to_id = int(request.form["to_id_q6"])
+                print("here")
+                init_time = time.time()
+                search_query = "SELECT ni.id,ni.name,di.pwd,di.code FROM ni join di on ni.id=di.id WHERE 1 = 1 "
+                search_query += " AND ni.id between " + str(from_id) + " AND " + str(to_id) + " ORDER BY id"
+                print(search_query)
+                list_result_q6 = run_search_query(search_query)
+                print(list_result_q6)
+                smallest = list_result_q6[0]
+                print(search_query)
+                largest = list_result_q6[len(list_result_q6)-1]
+                final_time = time.time()
+                exec_time = final_time - init_time
+                statement_q6 = f"The Execution time is  {exec_time}  seconds for running this query times."
+                
+                t_headings_q6 = ["id","name","pwd","code"]
+
+                return render_template('home.html',t_headings_q6=t_headings_q6,list_result_q6=list_result_q6,statement_q6=statement_q6)               
+
+
+
+
+    (b) Allow a user to give a number N (for example 5), and a code, and you will randomly select N of those with exact matching 
+        code and display the same information as the previous part (for example N=5, code= 200003)
+			
+    Please show the time to do those queries.
+	
+	            if 'top_num_q62' in request.form:
+                #print(request.form["search_name"])
+                top_num = int(request.form["top_num_q62"])
+                code_q62 = int(request.form["code_q62"])
+                print("here")
+                init_time = time.time()
+                search_query = "SELECT TOP "+str(top_num) +" ni.id,ni.name,di.pwd,di.code FROM ni join di on ni.id=di.id WHERE 1 = 1 "
+                search_query += " AND di.code = " + str(code_q62) +""
+                print(search_query)
+                list_result_q62 = run_search_query(search_query)
+                print(list_result_q62)
+                final_time = time.time()
+                exec_time = final_time - init_time
+                print(search_query)
+               
+                statement_q62 = f"The Execution time is  {exec_time}  seconds for running this query times."
+                
+                t_headings_q62 = ["id","name","pwd","code"]
+
+                return render_template('home.html',t_headings_q62=t_headings_q62,list_result_q62=list_result_q62,statement_q62=statement_q62)               
+
+
+
+ 7. A user will give you the number of times (T) to do the "query", you will do both of the previous questions 
+    that number (T) of times and show the results as well as the total time taken. 
+	
+	
+	           if 'from_id_q6' in request.form:
+                #print(request.form["search_name"])
+                n_times = int(request.form["n_times_q6"])
+                from_id = int(request.form["from_id_q6"])
+                to_id = int(request.form["to_id_q6"])
+                print("here")
+                init_time = time.time()
+                for i in range(0,n_times):
+                    search_query = "SELECT ni.id,ni.name,di.pwd,di.code FROM ni join di on ni.id=di.id WHERE 1 = 1 "
+                    search_query += " AND ni.id between " + str(from_id) + " AND " + str(to_id) + " ORDER BY id"
+                    print(search_query)
+                    list_result_q6 = run_search_query(search_query)
+                    print(list_result_q6)
+                    smallest = list_result_q6[0]
+                    print(search_query)
+                    largest = list_result_q6[len(list_result_q6)-1]
+                final_time = time.time()
+                exec_time = final_time - init_time
+                statement_q6 = f"The Execution time is  {exec_time}  seconds for running this query  {n_times}  times."
+                
+                t_headings_q6 = ["id","name","pwd","code"]
+
+                return render_template('home.html',t_headings_q6=t_headings_q6,list_result_q6=list_result_q6,statement_q6=statement_q6)               
+
+            if 'top_num_q62' in request.form:
+                #print(request.form["search_name"])
+                n_times = int(request.form["n_times_q62"])
+                top_num = int(request.form["top_num_q62"])
+                code_q62 = int(request.form["code_q62"])
+                print("here")
+                init_time = time.time()
+                for i in range(0,n_times):
+                    search_query = "SELECT TOP "+str(top_num) +" ni.id,ni.name,di.pwd,di.code FROM ni join di on ni.id=di.id WHERE 1 = 1 "
+                    search_query += " AND di.code = " + str(code_q62) +""
+                    print(search_query)
+                
+                    list_result_q62 = run_search_query(search_query)
+                print(list_result_q62)
+                final_time = time.time()
+                exec_time = final_time - init_time
+                print(search_query)
+               
+                statement_q62 = f"The Execution time is  {exec_time}  seconds for running this query {n_times}  times."
+                
+                t_headings_q62 = ["id","name","pwd","code"]
+
+                return render_template('home.html',t_headings_q62=t_headings_q62,list_result_q62=list_result_q62,statement_q62=statement_q62)               
+
+
+	
+	
+ 8. Repeat the previous question using (in addition to the database) an in-memory caching mechanism 
+    (NOT an in-memory database) then show us.
+
+ 9. Show us, in a link, the application running and we will try it out. Only for parts 5, 6, 7, 8
+
+ 10. When complete, return (send) this quiz
+     If you finish early, send this immediately, otherwise send between
+     the end of class and no more than 1 minute after that.
+

@@ -1,0 +1,83 @@
+
+Name:
+Last 4 digits ID:
+
+CSE 6331, Cloud Computing					
+
+
+Quiz Q3, Spring 2022   (c) DL, UTA, 2022
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     12 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please send the link, raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here:
+     _________________
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program/submission with your name and last digits of your ID.
+
+ 4a. Using the cloud services provider, all functionality possible should be implemented on that provider.
+     (Of course, displaying web pages through a browser and the user interface is "local")
+
+ 4b. Upload all data files (*csv, not this quiz) to cloud service. 
+
+ 4c. Create a database with the two csv files, each is a table. The ni table contains user names and the id for each, the di table
+     has a user's id, the password (pwd) for that user and a code.
+  
+Show and submit code, when each part is complete, raise your hand and then show us:
+
+ To recieve credit you MUST show (demo) AND submit the code (text only) on Canvas.
+
+ 5. Show a web page and interface (which resides on the cloud provider) with your 
+    Student ID at the top and below that, your name, at the top of every web page dispayed 
+    (for this quiz). Please use a large font.
+
+    Using the ni table, and using a web interface (web page) allow a user to give a range of 
+    id (for example 2345 to 5555) and show all of the names and id within that range.
+   
+    Also show the smallest and largest id and names in the data within that range.
+
+ 6. (a) Allow a user to give an id number (in  tables) range, and for all id in that range, list id, name, pwd and code.
+
+    (b) Allow a user to give a number N (for example 5), and a code, and you will randomly select N of those with exact matching 
+        code and display the same information as the previous part (for example N=5, code= 200003)
+
+    Please show the time to do those queries.
+
+ 7. A user will give you the number of times (T) to do the "query", you will do both of the previous questions 
+    that number (T) of times and show the results as well as the total time taken. 
+
+ 8. Repeat the previous question using (in addition to the database) an in-memory caching mechanism 
+    (NOT an in-memory database) then show us.
+
+ 9. Show us, in a link, the application running and we will try it out. Only for parts 5, 6, 7, 8
+
+ 10. When complete, return (send) this quiz
+     If you finish early, send this immediately, otherwise send between
+     the end of class and no more than 1 minute after that.
+

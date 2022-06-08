@@ -1,0 +1,187 @@
+
+Name: Avadhut Vijay Talbar
+Last 4 digits ID: 5622
+
+CSE 6331, Cloud Computing					
+
+
+Quiz Q6, Spring 2022   (c) DL, UTA, 2022
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     12 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please send the link, raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here:
+     AVT
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program/submission with your name and last digits of your ID.
+
+ 4. Using the cloud services provider, all functionality possible should be implemented on that provider.
+    (Of course, displaying web pages through a browser and the user interface is "local")
+
+
+Show and submit code, when each part is complete, raise your hand and then show us:
+
+ To recieve credit you MUST show (demo) AND submit the code (text only) on Canvas.
+
+ 5. Show a web page and interface (which resides on the cloud provider) with your 
+    Student ID at the top and below that, your name, at the top of every web page dispayed 
+    (for this quiz). Please use a large font.
+
+    A very simple game that can easily be deployed on a cloud provider is "lineg". Two players are playing against each other,
+    they are named player A and player B, here but each will enter her name when playing. There is an 11 square line (11 entries),
+    each player enters A or B in an unused (blank) place on the line. The players alternate moves. The first player to move 
+    3 in a row (A or B) wins, if all spots are occupied or either player wishes to quit they may leave (hit a button, or type a command,
+    or similar.) Player 1 plays first.
+    There are two independant web screens, one for each player
+   
+    An example:
+    Each player enters her name on her screen: Player A enters Alice, Player B enters Billy
+    Each player sees their own name and the name of the other player, on their screen, then sees the Start lineg
+    Start lineg: (1)__ (2)__ (3)__ (4)__ (5)__ (6)__ (7)__ (8)__ (9)__ (10)__ (11)__
+    Player A: (1)__ (2)__ (3)_A_ (4)__ (5)__ (6)__ (7)__ (8)__ (9)__ (10)__ (11)__
+    Player B: (1)__ (2)__ (3)_A_ (4)__ (5)__ (6)_B_ (7)__ (8)__ (9)__ (10)__ (11)__
+    Player A: (1)__ (2)__ (3)_A_ (4)_A_ (5)__ (6)_B_ (7)__ (8)__ (9)__ (10)__ (11)__
+    Player B: (1)__ (2)__ (3)_A_ (4)_A_ (5)__ (6)_B_ (7)_B_ (8)__ (9)__ (10)__ (11)__
+    Player A: (1)__ (2)_A_ (3)_A_ (4)_A_ (5)__ (6)_B_ (7)_B_ (8)__ (9)__ (10)__ (11)__
+    Player A wins!
+
+    Some rules:
+    + Each player has her own interface and sees the names of both players as well as the lineg
+    + Players alternate play, there is no auto detect of the winner
+    + Players are not allowed to cheat: no moving on top of an already marked place (B can not replace an A),
+        play must be interleaved A-> then B -> then A... (your game must enforce these rules)
+    + Each player enters her name to start the game, the names and the lineg are visable to both users
+    + The user interface does not need to look exactly like the one above, but it needs to show the relevant information
+
+    (a) Show the game screen(s) to the users, allow each to put in her name, show lineg
+
+    (b) Allow the game to be played
+
+    (c) Bonus: show an optional timer when game starts, start timer at 40 seconds, then decrease it each second,
+           auto-detect a winner, display who and where
+
+
+	
+    <script type="text/javascript">
+        // For Flask-sockeIO
+    $(document).ready(function() {
+
+        var socket = io.connect('http://127.0.0.1:5000');
+
+        socket.on('connect', function() {
+            socket.send('new user connected.');
+        }); 
+
+        socket.on('message', function(msg) {
+            $("#messages").append('<li>'+msg+'</li>');
+            console.log(' message received');
+        });
+
+        $('#sendbutton').on('click', function() {
+            socket.send($('#myMessage').val());
+            $('#myMessage').val('');
+        });
+
+        socket.on('username', function(user) {
+            $("#messages").append('<li>'+user+'</li>');
+            console.log(' message received');
+        });
+
+        $('#sendusername').on('click', function(user) {
+            socket.send($('#myUserName').val()+' '+' joined the game');
+            $('#myUserName').val('');
+        });
+        userJS = $('#myUserName').val()
+        $('#sendInitialGame').on('click', function() {
+            socket.send('Game Started<br>'+'(1)__ (2)__ (3)__ (4)__ (5)__ (6)__ (7)__ (8)__ (9)__ (10)__ (11)__');
+            $('#myUserName').val('');
+        });
+
+        $('#sendyourmove').on('click', function() {
+            socket.send(userJS+'played <br>'+ $('#myMove').val());
+            $('#myUserName').val('');
+        });
+    });
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+        <div class="container-fluid">
+            <h3>
+            <a class="navbar-brand" href="{{url_for('home_function')}}">HOME</a> 
+                <a class="navbar-brand" href="{{url_for('upload_function')}}">UPLOAD</a>
+                <a class="navbar-brand" href="{{url_for('update_function')}}">UPDATE</a>
+            </h3>
+        </div>
+    </nav>
+
+    <div class="p-3"> 
+        
+        <h5> UTA ID: 1001955622</h5> 
+        <h5>Avadhut Vijay Talbar </h5> 
+        <br>
+        <h4>lineg Game</h4>
+        <br>
+
+        <ul id="messages"></ul>
+        Enter Message here
+        <input type="text" id="myMessage">
+        <button id="sendbutton">Send</button>
+        <br>
+        Enter your Name:
+        <input type="text" id="myUserName">
+        <button id="sendusername">Join Game</button>
+
+        <br>
+        Start Game:
+        <button id="sendInitialGame">Start Game</button>
+        <br>
+        <br>
+        Enter your move:
+        <input type="text" id="myMove">
+        <button id="sendyourmove">Play your Move</button>
+
+        
+
+ 9. Show us, in a link, the application running and we will try it out. 
+	
+	https://av-quiz6.azurewebsites.net/
+	
+ 10. When complete, return (send) this quiz
+     If you finish early, send this immediately, otherwise send between
+     the end of class and no more than 1 minute after that.
+

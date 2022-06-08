@@ -1,0 +1,106 @@
+
+Name: Avadhut Vijay Talbar
+Last 4 digits ID: 5622
+
+CSE 6331, Cloud Computing					
+
+
+Quiz Q5, Spring 2022   (c) DL, UTA, 2022
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     12 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please send the link, raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here:
+     AVT
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program/submission with your name and last digits of your ID.
+
+ 4a. Using the cloud services provider, all functionality possible should be implemented on that provider.
+     (Of course, displaying web pages through a browser and the user interface is "local")
+
+ 4b. Upload all data files (*, not this quiz) to cloud service. Put the text file text.txt on the cloud provider.
+
+Show and submit code, when each part is complete, raise your hand and then show us:
+
+ To recieve credit you MUST show (demo) AND submit the code (text only) on Canvas.
+
+ 5. Show a web page and interface (which resides on the cloud provider) with your 
+    Student ID at the top and below that, your name, at the top of every web page dispayed 
+    (for this quiz). Please use a large font.
+
+    (a) Please remove the punctuation and all non-printable ASCII text, and change all characters to lower case.
+        Then show the first N characters on a web page, where we will give you the value N in a web interface.
+			            if 'char_count5a' in request.form:
+                char_count5a = int(request.form["char_count5a"])
+
+                index_sch = open_dir("indexdir")
+                list_result5a = ""
+                all_docs = index_sch.searcher().documents() 
+
+                for doc in all_docs:
+                    list_result5a = doc['content'][0:char_count5a]
+                list_result5a = re.sub(r'[^\w\s]','',list_result5a)
+                count_remaining = f"Total remaining chars are {len(doc['content']) - char_count5a}"
+
+                return render_template('home.html',list_result5a=list_result5a,count_remaining=count_remaining)
+    (b) Please count and display the total number of characters after the first part of step (a) is complete
+				            if 'char_count5a' in request.form:
+                char_count5a = int(request.form["char_count5a"])
+
+                index_sch = open_dir("indexdir")
+                list_result5a = ""
+                all_docs = index_sch.searcher().documents() 
+
+                for doc in all_docs:
+                    list_result5a = doc['content'][0:char_count5a]
+                list_result5a = re.sub(r'[^\w\s]','',list_result5a)
+                count_remaining = f"Total remaining chars are {len(doc['content']) - char_count5a}"
+
+                return render_template('home.html',list_result5a=list_result5a,count_remaining=count_remaining)
+			
+ 6. In a web interface allow a user to enter up to 5 words (strings of characters) and print the total number of occurances
+    for each word. After that please remove those words. (We will need to use step 5a to see the results)
+
+	
+	
+
+
+ 7. In a web interface allow a user to give two values: maxlength and minlength, show the first 10 (if they exist) words for
+    each length from max to min, for example for 8 and 5, show the first 10 words of length 8 characters, followed by 10 words
+    of length 7, then 6, then 5.
+
+ 8. Allow a user in a web interface to give two adjacent words and count all occurances of those two words, and show those
+    occurances; show the 5 words before and the 5 words after as well as those two words.   
+    
+ 9. Show us, in a link, the application running and we will try it out. Only for parts 5, 6, 7, 8
+
+ 10. When complete, return (send) this quiz
+     If you finish early, send this immediately, otherwise send between
+     the end of class and no more than 1 minute after that.
+

@@ -1,0 +1,47 @@
+ 
+ Assignment 6
+----------------------------------
+Multi User Game
+
+Multiple Processes/Instances but shared data
+
+
+Admin start a Room and allow players to join
+
+
+
+
+
+add a button to start the game -- maybe a thread
+
+The game has three piles of stones, and players pick up stones from the piles (limited to
+picking up from just one pile).
+
+Allow judge to provide number of stones initially in 3 piles
+
+allow judge to select how many num of stones can be picked at a time
+
+Min 1 can be picked -- max -- ?
+
+judge decides which player plays first -- you can show which users turn to play
+
+
+Two playes and they should enter names on two sides of page
+
+
+show their names at top
+
+Allowe user to select stone pile and number of stone 
+
+also display the score 
+display how many stones are remaining
+
+
+Loser is one who picks last stones
+
+
+
+
+
+
+
